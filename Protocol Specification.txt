@@ -1,0 +1,54 @@
+This is an Application Layer Protocol that does shifting encryption or decryption of a string. It is usless to have a protocol implementation of this, but I'm doing it just for the sakes of using pure TCP and nothing else. This just an excercise to better understand networking and string manipulation in Java.
+
+Just for fun, asign the port 6900 to listen for requests of this kind.
+
+
+(Response Code 0) If the request is valid, the server responds with either with the encrypted message followed by a newline character, or with 26 possible lines - each followed by a newline character. 
+(Response Code 1) If the OP-CODE is unknown, the server responds with "BAD OP-CODE!".
+(Response Code 2) If the SHIFT-VALUE is out of the 32 bit integer range, the server responds with "SHIFT VALUE TOO LARGE!".
+(Response Code 3) If the format of the request is bad, the server responds with: "BAD REQUEST FORMAT!".
+(Response Code 100) Upon connection, the server responds with: SERVER AT YOUR SERVICE!\n
+(Response Code 101) Upon closing the connection, the server responds with: GOOD BYE!\n
+(Response Code 102) Upon sending help, the server responds with general request format information.
+
+
+
+
+Request Formats:
+
+1: ENCRYPT | SPACE | SHIFT-VALUE | SPACE | [STRING]
+
+2: DECRYPT | SPACE | [STRING]
+
+3: HELP
+
+4: CLOSE
+
+
+
+Details:
+
+OP-CODE may be ENCRYPT, DECRYPT, HELP, or CLOSE (Op-codes are case-sensitive).
+
+When using ENCRYPT, there is only one correct encryption.
+
+When using DECRYPT, however, the server must then return 26 different strings, one of which must be the correct decryption.
+
+SHIFT-VALUE is an integer value.
+
+STRING is the string that you want to encrypt/decrypt and it must be enclosed in square brackets, e.g [The big brown fox].
+
+When sending HELP, the server will respond with general information about the structure of requests.
+
+Sending just CLOSE will close the connection.
+
+
+
+Further Details:
+
+Everything is UTF8 encoded.
+
+The spaces, numbers, punctuation, and word positions of the encoded/decoded string remain fixed.
+
+
+
