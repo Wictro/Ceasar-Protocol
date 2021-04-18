@@ -1,3 +1,6 @@
+/*
+* Models a client requiest and parses it accordingly
+*/
 class ClientRequest{
 	public OpCode op_code;
 	public int shift_value;
@@ -6,6 +9,7 @@ class ClientRequest{
 	public ClientRequest(String s) throws Exception{
 		this.parse(s);
 	}
+	
 	
 	private void parse(String s) throws Exception{
 		//do all the decoding of the string and initialize the three fields accordingly

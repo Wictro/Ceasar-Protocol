@@ -1,3 +1,6 @@
+/*
+* Types of OP codes we can recieve
+*/
 enum OpCode{
 	ENCRYPT("ENCRYPT"), DECRYPT("DECRYPT"), CLOSE("CLOSE"), HELP("HELP");
 	

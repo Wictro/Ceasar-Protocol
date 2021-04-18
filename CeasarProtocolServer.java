@@ -1,9 +1,15 @@
 import java.net.*;
 import java.io.*;
+/*
+*The server that handles all incomin requests
+*/
 public class CeasarProtocolServer{
     private ServerSocket serverSocket;
 		private static final int port = 6900;
-
+		
+		/*
+		* Entry point for all incoming requests
+		*/
     public void start(int port) throws IOException{
         serverSocket = new ServerSocket(port);
         while(true){
@@ -14,7 +20,10 @@ public class CeasarProtocolServer{
     public void stop() throws IOException{
         serverSocket.close();
     }
-
+		
+		/*
+		* Handles a single TCP connection
+		*/
     private static class EchoClientHandler extends Thread{
         private Socket clientSocket;
         private PrintWriter out;
@@ -56,7 +65,10 @@ public class CeasarProtocolServer{
             clientSocket.close();
         }
     }
-
+		
+		/*
+		* Initialize and run the server
+		*/
     public static void main(String[] args) throws IOException{
         new CeasarProtocolServer().start(port);
     }

@@ -1,3 +1,6 @@
+/*
+* The model of the project, encrypting and decrypting stuff
+*/
 class Cryptor{
 	private static final String UPPER_ALPHABET = generateUppercaseAlphabet();
 	private static final String LOWER_ALPHABET = generateLowercaseAlphabet();
@@ -36,7 +39,7 @@ class Cryptor{
 					 ((characterIndex - shiftAmount) + alphabet.length()) % alphabet.length());
 	}
 	
-	private static String encrypt(String message, int shiftAmount){//zhvendos stringun
+	private static String encrypt(String message, int shiftAmount){//enkripton stringun
 		char[] shiftedMessage = new char[message.length()];
 			
 		for(int i = 0; i < message.length(); i++){
